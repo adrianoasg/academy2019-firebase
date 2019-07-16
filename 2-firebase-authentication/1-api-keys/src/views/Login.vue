@@ -15,7 +15,7 @@
         </div>
 
         <div class="actions">
-          <button type="submit" class="center" @click="submitLogin">
+          <button type="submit" class="center">
             Acessar
           </button>
         </div>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import firebase from 'firebase'
 export default {
   data: () => ({
     email: '',
@@ -41,7 +42,13 @@ export default {
 
   methods: {
     submitLogin () {
-
+      firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
+        (user) => {
+          alert(`Login efetuado com sucesso!`)
+        })
+        .catch(error => {
+          alert('Erro ao efetuar login! \n\n' + error.message)
+        })
     },
 
     handleNewAccount () {

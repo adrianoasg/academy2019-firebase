@@ -46,7 +46,7 @@ export default {
       firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
         .then(() => {
           alert('Conta criada com sucesso !')
-          this.$router.push({ path: '/login' })
+          this.$router.replace('login')
         }).catch((error) => {
           alert('Erro ao criar conta. \n\n' + error)
         })

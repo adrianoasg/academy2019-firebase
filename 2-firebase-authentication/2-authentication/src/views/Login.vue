@@ -46,7 +46,9 @@ export default {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password)
         .then(() => {
           alert('Autenticado com sucesso!')
-        }).catch(() => {
+          this.$router.push({ path: '/view' })
+        })
+        .catch(() => {
           alert('Falha na autenticação!')
         })
     },
